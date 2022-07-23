@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap} from 'rxjs/operators';
 import { User } from './user';
 
 @Injectable({
@@ -17,5 +18,5 @@ export class UserService {
     const url = this.userUrl + "/Register";
     return this.http.post<User>(url, user, this.httpOptions);
   }
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 }
