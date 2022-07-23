@@ -9,8 +9,6 @@ import { LocationComponent } from './location/location.component';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
-import { GoogleMapsModule } from '@angular/google-maps'
-
 
 @NgModule({
   declarations: [
@@ -24,8 +22,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    GoogleMapsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

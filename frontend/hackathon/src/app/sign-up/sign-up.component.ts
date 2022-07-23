@@ -9,7 +9,7 @@ import { User } from '../user';
 })
 export class SignUpComponent implements OnInit {
   signup(username: string, email:string, password:string){
-    this.userService.signUp({username, email, password} as User).subscribe({error: (e) => console.log(e)});
+    this.userService.signUp({username, email, password} as User).subscribe();
   }
 
   constructor(private userService:UserService) { }
