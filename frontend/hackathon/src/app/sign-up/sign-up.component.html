@@ -1,3 +1,4 @@
-<input [(ngModel)]="username">
-<input [(ngModel)]="email" type="email">
-<input [(ngModel)]="password" type="password">
+<input #username>
+<input #email type="email">
+<input #password type="password">
+<button (click)="signup(username.value, email.value, password.value)">Sign up</button>

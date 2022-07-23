@@ -8,9 +8,9 @@ import { UserService } from '../user.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  username:string = ""
-  email:string = ""
-  password:string = ""
+  signup(username: string, email:string, password:string){
+    this.userService.signUp({username, email, password} as User).subscribe();
+  }
 
   constructor(private userService:UserService) { }
 

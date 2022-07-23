@@ -7,14 +7,15 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-  private heroesUrl = "api/";
+  private userUrl = "https://localhost:7187/api/users";
 
   httpOptions = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
   };
 
   signUp(user: User): Observable<User>{
-    return this.http.post<User>(this.heroesUrl, user, this.httpOptions);
+    const url = this.userUrl + "/Register";
+    return this.http.post<User>(url, user, this.httpOptions);
   }
   constructor(private http: HttpClient) { }
 }
