@@ -3,6 +3,8 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System.Net;
+using System.Net.Mail;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
@@ -119,7 +121,8 @@ public class UsersService
         newUser.password = PasswordHashing(newUser.password);
 
         await _usersCollection.InsertOneAsync(newUser);
-            return 0;
+        SendMail("hackcleanstreets@gmail.com","pizzaburek123", newUser.email);
+        return 0;
     }
     public async Task<int> Confirm(string GUID){
         System.Console.WriteLine(GUID);
@@ -128,8 +131,30 @@ public class UsersService
             var user = await _usersCollection.Find(x => x.GUID == GUID).FirstAsync();
             user.confirmed = true;
             await UpdateAsync(user.Id, user);
+            
             return 1;
         }
         return 0; 
     }
+    public void SendMail(string fromAdress, string password, string userEmail){
+	    using SmtpClient email = new SmtpClient{
+	    DeliveryMethod = SmtpDeliveryMethod.Network,
+	    UseDefaultCredentials = false,
+	    EnableSsl = true,
+	    Host = "smtp.gmail.com",
+	    Port = 587,
+	    Credentials = new NetworkCredential(fromAdress, password)	
+	    };
+	    string subject = "Confirm accout";
+	    string body = $"Press to confirm your accout: {userEmail}";
+	    try{
+		    email.Send(fromAdress,toAdress(userEmail), subject, body);
+	    }
+		catch(SmtpException e){
+			Console.WriteLine(e);
+	    }
+    }
+        public static string toAdress(string userEmail){
+            return userEmail;
+        }
 }
