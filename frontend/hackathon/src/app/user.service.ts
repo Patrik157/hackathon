@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
+import { User } from './user';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './user';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,5 +16,6 @@ export class UserService {
     const url = this.userUrl + "/Register";
     return this.http.post<User>(url, user, this.httpOptions);
   }
+
   constructor(private http: HttpClient) { }
 }

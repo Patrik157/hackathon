@@ -16,13 +16,13 @@ import { LogInComponent } from './log-in/log-in.component';
     LocationComponent,
     PocetnaComponent,
     SignUpComponent,
-    LogInComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
