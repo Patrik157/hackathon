@@ -13,22 +13,14 @@ import { Router,NavigationStart} from '@angular/router';
 })
 export class LogInComponent implements OnInit {
   error?: string
-  ua = navigator.userAgent;
 
   signIn(email: string, password: string){
-    this.userService.logIn({email, password} as User).subscribe({next: (v : UserToken) => {
-      this.userService.httpOptions.headers = this.userService.httpOptions.headers.append("Authorization", `Bearer ${v.token}`);
-      this.router.navigateByUrl("/prijaviSmece");
-    }, error: (e) => this.error = e.error});
+    this.error = this.userService.logIn({email, password} as User)
   }
 
   constructor(private userService: UserService, private location: Location, private router: Router) { }
 
   ngOnInit(): void {
-    if(this.ua.includes("Android")){
-      console.log("ANDROID!");
-    }
-    else{console.log("PC!");}
   }
 
 }
