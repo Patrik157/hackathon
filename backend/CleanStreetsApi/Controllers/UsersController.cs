@@ -92,9 +92,9 @@ public class UsersController : ControllerBase
     }
 
     [AllowAnonymous]
-    [Route("confirm")]
+    [Route("confirm/{GUID}")]
     [HttpPost]
-    public async Task<IActionResult> Confirm(Guid GUID){
+    public async Task<IActionResult> Confirm(string GUID){
         var res = await _UsersService.Confirm(GUID);
         if(res == 1)
             return Ok();

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JtnC4v+DjyvuncaOKOLYvru/vPMxpMHL9amJXoczijUy6sES81FZXlQyjtc4ngSGtXhQewJzW5wiXs9RE1mA9w==",
+  "dgSpecHash": "DV492CY56dZgjPswijHJxhy7XHEjw9cZxFafVLR6pOxhOL8zg4GCzD+cgut8dq2plT6LFb+KA9R2QIVweSqvhQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Patrik\\Desktop\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj",
+  "projectFilePath": "C:\\Users\\Patrik\\Desktop\\hackathon2\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Patrik\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\Patrik\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
