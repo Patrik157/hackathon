@@ -8,13 +8,13 @@ import { UserService } from '../user.service';
   styleUrls: ['./phone.component.css']
 })
 export class PhoneComponent implements OnInit {
-  user?:User
+  user?:User[]
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     console.log(this.userService.httpOptions.headers);
-    this.userService.getUser().subscribe(user => console.log(user));
+    this.userService.getUsers().subscribe(users => console.log(users));
   }
 
 }

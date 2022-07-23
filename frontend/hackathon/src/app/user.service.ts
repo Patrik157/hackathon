@@ -25,8 +25,8 @@ export class UserService {
     return this.http.post<UserToken>(url, user, this.httpOptions);
   }
 
-  getUser(){
-    return this.http.get<User>(this.userUrl, this.httpOptions);
+  getUsers(): Observable<User[]>{
+    return this.http.get<User[]>(this.userUrl, this.httpOptions);
   }
 
   constructor(private http: HttpClient) {}
