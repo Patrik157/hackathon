@@ -87,10 +87,26 @@ public class UsersService
         SecurityToken token = tokenHolder.CreateToken(tokenDescriptor);
         return tokenHolder.WriteToken(token);
     }
+    public string randomGuid(){
+        var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var stringChars = new char[16];
+        var random = new Random();
+
+        for (int i = 0; i < stringChars.Length; i++)
+        {
+        stringChars[i] = chars[random.Next(chars.Length)];
+        }
+
+        var finalString = new String(stringChars);
+        return finalString;
+
+    }
 
     
     public async Task<int> Register(User newUser){  //0= success, 1 = emailtaken, 2 = username taken  3= password too short 4= username is too short
-
+        
+    
+        newUser.GUID = randomGuid();
         if(newUser.username.Length < 3)
             return 4;
         else if(newUser.password.Length < 8)
@@ -105,12 +121,13 @@ public class UsersService
         await _usersCollection.InsertOneAsync(newUser);
             return 0;
     }
-    public async Task<int> Confirm(Guid GUID){
+    public async Task<int> Confirm(string GUID){
         System.Console.WriteLine(GUID);
         var configured = await _usersCollection.Find(x => x.GUID == GUID).AnyAsync();
         if(configured){
             var user = await _usersCollection.Find(x => x.GUID == GUID).FirstAsync();
             user.confirmed = true;
+            await UpdateAsync(user.Id, user);
             return 1;
         }
         return 0; 
