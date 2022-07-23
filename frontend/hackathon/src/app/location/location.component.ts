@@ -12,6 +12,7 @@ export class LocationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
     navigator.geolocation.getCurrentPosition((position) => {
       this.center = {
         lat: position.coords.latitude,

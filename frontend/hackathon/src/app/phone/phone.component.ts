@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-phone',
@@ -8,13 +9,27 @@ import { UserService } from '../user.service';
   styleUrls: ['./phone.component.css']
 })
 export class PhoneComponent implements OnInit {
-  user?:User[]
+  user?:User
+  lat?:number
+  lng?:number
+  constructor(private userService: UserService, private router: Router) { }
 
-  constructor(private userService: UserService) { }
+  prijaviLokaciju(): void{
+    console.log(`${this.lat} ${this.lng}`);
+    this.change();
+  }
+
+  change(){
+    this.router.navigateByUrl("/stanjeZagadenja");
+  }
 
   ngOnInit(): void {
-    console.log(this.userService.httpOptions.headers);
-    this.userService.getUsers().subscribe(users => console.log(users));
+    //if(!this.userService.ua.includes("Android") || !this.userService.isLoggedin()){this.router.navigateByUrl("");}
+
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+    })
   }
 
 }
