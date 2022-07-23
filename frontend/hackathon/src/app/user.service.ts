@@ -9,7 +9,6 @@ import { UserToken } from './user';
 })
 export class UserService {
   private userUrl = "https://localhost:7187/api/users";
-  authToken?: any;
 
   //'Authorization': `Bearer ${auth_token}`
   httpOptions = {
@@ -25,6 +24,11 @@ export class UserService {
     const url = this.userUrl + "/Login";
     return this.http.post<UserToken>(url, user, this.httpOptions);
   }
+
+  getUser(){
+    return this.http.get<User>(this.userUrl, this.httpOptions);
+  }
+
   constructor(private http: HttpClient) {}
 
 }

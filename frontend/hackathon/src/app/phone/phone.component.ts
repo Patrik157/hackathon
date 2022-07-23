@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
 import { UserService } from '../user.service';
 
 @Component({
@@ -7,11 +8,13 @@ import { UserService } from '../user.service';
   styleUrls: ['./phone.component.css']
 })
 export class PhoneComponent implements OnInit {
+  user?:User
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     console.log(this.userService.httpOptions.headers);
+    this.userService.getUser().subscribe(user => console.log(user));
   }
 
 }
