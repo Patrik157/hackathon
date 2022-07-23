@@ -18,7 +18,7 @@ builder.Services.AddControllers()
         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(x =>{
-            //x.Authority = "https://localhost:5000";
+            //x.Authority = "https://localhost:4200";
             x.RequireHttpsMetadata = false;
             x.SaveToken = true;
             x.TokenValidationParameters = new TokenValidationParameters{
@@ -37,6 +37,10 @@ var app = builder.Build();
 app.UseAuthentication();
 
 app.UseHttpsRedirection();
+app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
 app.UseAuthorization();
 
