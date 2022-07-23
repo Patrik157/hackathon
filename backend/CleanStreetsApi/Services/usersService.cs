@@ -121,7 +121,7 @@ public class UsersService
         newUser.password = PasswordHashing(newUser.password);
 
         await _usersCollection.InsertOneAsync(newUser);
-        SendMail("hackcleanstreets@gmail.com","pizzaburek123", newUser.email);
+        SendMail("hackcleanstreets@outlook.com","pizzaburek123", newUser);
         return 0;
     }
     public async Task<int> Confirm(string GUID){
@@ -136,19 +136,23 @@ public class UsersService
         }
         return 0; 
     }
-    public void SendMail(string fromAdress, string password, string userEmail){
+    public void SendMail(string fromAdress, string password, User newuser){
+        
+        
 	    using SmtpClient email = new SmtpClient{
 	    DeliveryMethod = SmtpDeliveryMethod.Network,
 	    UseDefaultCredentials = false,
 	    EnableSsl = true,
-	    Host = "smtp.gmail.com",
-	    Port = 587,
-	    Credentials = new NetworkCredential(fromAdress, password)	
+	    Host = "smtp-mail.outlook.com",
+	    Port = 25,
+	    Credentials = new NetworkCredential(fromAdress, password)
 	    };
-	    string subject = "Confirm accout";
-	    string body = $"Press to confirm your accout: {userEmail}";
+	    string subject = "Confirm account";
+        MailMessage mail = new MailMessage(fromAdress,newuser.email, subject, "");  //promjeni to
+        mail.IsBodyHtml = true;
+        email.Send(mail);
 	    try{
-		    email.Send(fromAdress,toAdress(userEmail), subject, body);
+		    email.Send(fromAdress,newuser.email, subject, body);
 	    }
 		catch(SmtpException e){
 			Console.WriteLine(e);

@@ -1,9 +1,9 @@
 using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using System.Configuration;
 using CleanStreetsApi.Models;
 using CleanStreetsApi.Services;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -32,17 +32,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
 app.UseAuthentication();
-
 app.UseHttpsRedirection();
+app.UseAuthorization();
+
+
+
 app.UseCors(x => x
             .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader());
 
-app.UseAuthorization();
+
 
 app.MapControllers();
-
 app.Run();
