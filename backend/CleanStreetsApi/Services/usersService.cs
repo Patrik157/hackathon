@@ -105,4 +105,14 @@ public class UsersService
         await _usersCollection.InsertOneAsync(newUser);
             return 0;
     }
+    public async Task<int> Confirm(Guid GUID){
+        System.Console.WriteLine(GUID);
+        var configured = await _usersCollection.Find(x => x.GUID == GUID).AnyAsync();
+        if(configured){
+            var user = await _usersCollection.Find(x => x.GUID == GUID).FirstAsync();
+            user.confirmed = true;
+            return 1;
+        }
+        return 0; 
+    }
 }

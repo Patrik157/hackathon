@@ -1,11 +1,10 @@
 using System.Text;
-using System.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using CleanStreetsApi.Models;
 using CleanStreetsApi.Services;
-var builder = WebApplication.CreateBuilder(args);
 
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<CleanStreetsDatabaseSettings>(
