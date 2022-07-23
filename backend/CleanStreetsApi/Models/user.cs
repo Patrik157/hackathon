@@ -13,6 +13,8 @@ public class User
 
     public string password { get; set; } = null!;
 
+    public string email {get; set; } = null!;
+
     public int role {get; set;} = 0;
 
     public bool confirmed { get; set; } = false;
