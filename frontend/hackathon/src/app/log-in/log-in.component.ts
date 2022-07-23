@@ -16,7 +16,7 @@ export class LogInComponent implements OnInit {
   signIn(email: string, password: string){
     this.userService.logIn({email, password} as User).subscribe({next: (v : UserToken) => {
       this.userService.httpOptions.headers = this.userService.httpOptions.headers.append("Authorization", `Bearer ${v.token}`);
-      this.location.replaceState("/prijaviSmece");
+      this.location.go("/prijaviSmece");
   }, error: (e) => this.error = e.error});
   }
 
