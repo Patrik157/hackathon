@@ -148,6 +148,7 @@ public class UsersService
 	    Credentials = new NetworkCredential(fromAdress, password)
 	    };
 	    string subject = "Confirm account";
+        string body = "nesto"J
         MailMessage mail = new MailMessage(fromAdress,newuser.email, subject, "");  //promjeni to
         mail.IsBodyHtml = true;
         email.Send(mail);
