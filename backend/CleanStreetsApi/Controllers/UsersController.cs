@@ -86,9 +86,19 @@ public class UsersController : ControllerBase
                 return BadRequest("Password is too short!");
             case 4: 
                 return BadRequest("Username must be longer than 2 letters!");
+            
         }   
-        
         return Ok(new{newUser});
+    }
+
+    [AllowAnonymous]
+    [Route("confirm")]
+    [HttpPost]
+    public async Task<IActionResult> Confirm(Guid GUID){
+        var res = await _UsersService.Confirm(GUID);
+        if(res == 1)
+            return Ok();
+        return BadRequest("Wrong link for conformation!");
     }
 
     [AllowAnonymous]
@@ -99,7 +109,8 @@ public class UsersController : ControllerBase
     
         if(fuser is null)
             return NotFound();
-            
+        if(!fuser.confirmed)
+            return BadRequest("Email not confirmed");  
         if(token is null)
             return Unauthorized();
 

@@ -1,11 +1,10 @@
 using System.Text;
-using System.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using CleanStreetsApi.Models;
 using CleanStreetsApi.Services;
-var builder = WebApplication.CreateBuilder(args);
 
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<CleanStreetsDatabaseSettings>(
@@ -18,7 +17,7 @@ builder.Services.AddControllers()
         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(x =>{
-            //x.Authority = "https://localhost:5000";
+            //x.Authority = "https://localhost:4200";
             x.RequireHttpsMetadata = false;
             x.SaveToken = true;
             x.TokenValidationParameters = new TokenValidationParameters{
@@ -37,6 +36,10 @@ var app = builder.Build();
 app.UseAuthentication();
 
 app.UseHttpsRedirection();
+app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
 app.UseAuthorization();
 
