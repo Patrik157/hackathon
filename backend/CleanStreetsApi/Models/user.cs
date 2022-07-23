@@ -4,6 +4,7 @@ using System;
 
 namespace CleanStreetsApi.Models;
 
+
 public class User
 {
     [BsonId]
@@ -16,9 +17,8 @@ public class User
 
     public string email {get; set; } = null!;
 
+    public  string GUID {get; set; } = string.Empty;
     
-    public Guid GUID {get; set; } = Guid.NewGuid();
-
     public int role {get; set;} = 0;
 
     public bool confirmed { get; set; } = false;
