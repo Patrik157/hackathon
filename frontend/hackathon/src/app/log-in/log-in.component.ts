@@ -13,7 +13,6 @@ export class LogInComponent implements OnInit {
 
   signIn(email: string, password: string){
     this.userService.logIn({email, password} as User).subscribe({next: (v) => console.log(v), error: (e) => this.error = e.error});
-
   }
 
   constructor(private userService: UserService) { }
