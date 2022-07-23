@@ -4,3 +4,8 @@ export interface User{
   email: string
   id: string
 }
+
+export interface UserToken{
+  user: User
+  token: string
+}
