@@ -11,11 +11,11 @@ public class User
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
 
-    public string username { get; set; } = null!;
+    public string username { get; set; } = string.Empty;
 
-    public string password { get; set; } = null!;
+    public string password { get; set; } = string.Empty;
 
-    public string email {get; set; } = null!;
+    public string email {get; set; } = string.Empty;
 
     public  string GUID {get; set; } = string.Empty;
     

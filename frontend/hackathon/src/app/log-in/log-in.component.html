@@ -1,3 +1,4 @@
+<p *ngIf="error">{{error}}</p>
 <input #email>
 <input #password type="password">
 <button (click)="signIn(email.value, password.value)">Log in</button>

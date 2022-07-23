@@ -104,11 +104,12 @@ public class UsersController : ControllerBase
     [AllowAnonymous]
     [Route("login")]
     [HttpPost]
-    public async Task<IActionResult> Login(User user){      //login method for generating jwt token
+    public async Task<IActionResult> Login(User user){
+        user.username = "username";     //login method for generating jwt token
         var (token, fuser) = await _UsersService.Authenticate(user.email, user.password);
     
         if(fuser is null)
-            return NotFound();
+            return BadRequest("User not found");
         if(!fuser.confirmed)
             return BadRequest("Email not confirmed");  
         if(token is null)

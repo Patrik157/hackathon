@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Patrik\\Desktop\\hackathon2\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj": {}
+    "C:\\Users\\Patrik\\Desktop\\hackathon3\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Patrik\\Desktop\\hackathon2\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj": {
+    "C:\\Users\\Patrik\\Desktop\\hackathon3\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Patrik\\Desktop\\hackathon2\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj",
+        "projectUniqueName": "C:\\Users\\Patrik\\Desktop\\hackathon3\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj",
         "projectName": "CleanStreetsApi",
-        "projectPath": "C:\\Users\\Patrik\\Desktop\\hackathon2\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj",
+        "projectPath": "C:\\Users\\Patrik\\Desktop\\hackathon3\\hackathon\\backend\\CleanStreetsApi\\CleanStreetsApi.csproj",
         "packagesPath": "C:\\Users\\Patrik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Patrik\\Desktop\\hackathon2\\hackathon\\backend\\CleanStreetsApi\\obj\\",
+        "outputPath": "C:\\Users\\Patrik\\Desktop\\hackathon3\\hackathon\\backend\\CleanStreetsApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
