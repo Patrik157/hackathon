@@ -6,11 +6,17 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationComponent } from './location/location.component';
+import { PocetnaComponent } from './pocetna/pocetna.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LocationComponent
+    LocationComponent,
+    PocetnaComponent,
+    SignUpComponent,
+    LogInComponent,
   ],
   imports: [
     BrowserModule,
