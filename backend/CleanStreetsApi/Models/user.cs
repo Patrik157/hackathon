@@ -1,5 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace CleanStreetsApi.Models;
 
@@ -14,6 +15,9 @@ public class User
     public string password { get; set; } = null!;
 
     public string email {get; set; } = null!;
+
+    
+    public Guid GUID {get; set; } = Guid.NewGuid();
 
     public int role {get; set;} = 0;
 

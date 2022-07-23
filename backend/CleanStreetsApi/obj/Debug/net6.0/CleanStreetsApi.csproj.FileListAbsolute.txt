@@ -48,3 +48,4 @@ C:\Users\Patrik\Desktop\hackathon\backend\CleanStreetsApi\obj\Debug\net6.0\refin
 C:\Users\Patrik\Desktop\hackathon\backend\CleanStreetsApi\obj\Debug\net6.0\CleanStreetsApi.pdb
 C:\Users\Patrik\Desktop\hackathon\backend\CleanStreetsApi\obj\Debug\net6.0\CleanStreetsApi.genruntimeconfig.cache
 C:\Users\Patrik\Desktop\hackathon\backend\CleanStreetsApi\obj\Debug\net6.0\ref\CleanStreetsApi.dll
+C:\Users\Patrik\Desktop\hackathon\backend\CleanStreetsApi\bin\Debug\net6.0\System.Security.Permissions.dll
