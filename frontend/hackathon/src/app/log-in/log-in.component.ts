@@ -3,7 +3,8 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { Location } from '@angular/common';
 import { UserToken } from '../user';
-import { RouterLink } from '@angular/router';
+import { Router,NavigationStart} from '@angular/router';
+
 
 @Component({
   selector: 'app-log-in',
@@ -17,13 +18,11 @@ export class LogInComponent implements OnInit {
   signIn(email: string, password: string){
     this.userService.logIn({email, password} as User).subscribe({next: (v : UserToken) => {
       this.userService.httpOptions.headers = this.userService.httpOptions.headers.append("Authorization", `Bearer ${v.token}`);
-      this.location.replaceState("/prijaviSmece")
-      window.location.reload();
-      console.log(this.userService.httpOptions.headers);
-  }, error: (e) => this.error = e.error});
+      this.router.navigateByUrl("/prijaviSmece");
+    }, error: (e) => this.error = e.error});
   }
 
-  constructor(private userService: UserService, private location: Location, private routerLink: RouterLink) { }
+  constructor(private userService: UserService, private location: Location, private router: Router) { }
 
   ngOnInit(): void {
     if(this.ua.includes("Android")){
