@@ -6,20 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-  lat?: number;
-  lng?: number;
-
-  getUserLocation(): void{
-    navigator.geolocation.getCurrentPosition(position => {
-      this.lat = position.coords.latitude;
-      this.lng = position.coords.longitude;
-    })
-  }
+  center!: google.maps.LatLngLiteral
+  map: any;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.getUserLocation();
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      }
+    })
   }
 
 }

@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private userUrl = "https://localhost:7187/api/users";
+  authToken?: any;
 
+  //'Authorization': `Bearer ${auth_token}`
   httpOptions = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
   };
@@ -17,5 +20,11 @@ export class UserService {
     return this.http.post<User>(url, user, this.httpOptions);
   }
 
-  constructor(private http: HttpClient) { }
+  logIn(user: User){
+    const url = this.userUrl + "/Login";
+    return this.http.post(url, user, this.httpOptions);
+    //this.httpOptions.headers = this.httpOptions.headers.append("Authorization", `Bearer ${auth_token}`)
+  }
+  constructor(private http: HttpClient) {}
+
 }
