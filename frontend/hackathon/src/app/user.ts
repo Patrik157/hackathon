@@ -5,3 +5,8 @@ export interface User{
   id: string
   role: number
 }
+
+export interface UserToken{
+  user: User
+  token: string
+}

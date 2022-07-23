@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserToken } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class UserService {
 
   logIn(user: User){
     const url = this.userUrl + "/Login";
-    return this.http.post(url, user, this.httpOptions);
+    return this.http.post<UserToken>(url, user, this.httpOptions);
     //this.httpOptions.headers = this.httpOptions.headers.append("Authorization", `Bearer ${auth_token}`)
   }
   constructor(private http: HttpClient) {}
