@@ -18,7 +18,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
     LocationComponent,
     PocetnaComponent,
     SignUpComponent,
-    LogInComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
-declare var ol: any;
-
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -22,4 +19,5 @@ export class LocationComponent implements OnInit {
       }
     })
   }
+
 }
