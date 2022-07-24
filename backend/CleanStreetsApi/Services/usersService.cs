@@ -11,9 +11,15 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace CleanStreetsApi.Services;
 
+
+
 public class UsersService
 {
     private readonly IMongoCollection<User> _usersCollection;
+
+    private readonly IMongoCollection<mapCords> _coordsCollection;
+
+    
     private readonly string key, salt;
     const int hoursDuration = 1;    //Number of Hours that the key lasts
 
@@ -28,15 +34,17 @@ public class UsersService
 
         _usersCollection = mongoDatabase.GetCollection<User>(
             CleanStreetsDatabaseSettings.Value.UsersCollectionName);
+
+        _coordsCollection = mongoDatabase.GetCollection<mapCords>(
+            CleanStreetsDatabaseSettings.Value.CoordsCollectionName);
     
         key = CleanStreetsDatabaseSettings.Value.JwtKey;
 
         salt = CleanStreetsDatabaseSettings.Value.Salt;
     }
 
-    public async Task<List<User>> GetAsync() =>
+    public async Task<List<User>> GetAsync() => 
         await _usersCollection.Find(_ => true).ToListAsync();
-
     public async Task<User?> GetAsync(string id) =>
         await _usersCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
@@ -147,19 +155,24 @@ public class UsersService
 	    Port = 25,
 	    Credentials = new NetworkCredential(fromAdress, password)
 	    };
-	    string subject = "Confirm account";
-        string body = "nesto";
-        MailMessage mail = new MailMessage(fromAdress,newuser.email, subject, body);  //promjeni to
-        mail.IsBodyHtml = true;
-        //email.Send(fromAdress,newuser.email, subject, body);
+        MailMessage mail = new MailMessage(fromAdress,newuser.email);  //promjeni to
+        mail.Subject = "Confirm account";
+        mail.Body = "Upisite ovaj kod kako biste potvrdili email: " + newuser.GUID;
 	    try{
-		    email.Send(fromAdress,newuser.email, subject, body);
+		    email.Send(mail);
 	    }
 		catch(SmtpException e){
 			Console.WriteLine(e);
 	    }
-    }
+        }
         public static string toAdress(string userEmail){
             return userEmail;
         }
+
+    //public async Task CreateAsyncCoords(mapCords newCoords) =>
+    //    await _coordsCollection.InsertOneAsync(newCoords);
+    //public double lon { get; set; } = 14.523287 - (14.523287- 14.334288) * new Random().NextDouble();
+
+    //public double lat {get; set; } = 45.385354 - (45.385354 - 45.316470) *  new Random().NextDouble();
+    
 }

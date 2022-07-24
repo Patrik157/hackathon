@@ -13,6 +13,8 @@ public class UsersController : ControllerBase
 {
     private readonly UsersService _UsersService;
 
+    
+
     public UsersController(UsersService UsersService) =>
         _UsersService = UsersService;
 
@@ -32,6 +34,13 @@ public class UsersController : ControllerBase
 
         return user;
     }
+    /*
+    [AllowAnonymous]
+    [Route("heatmap")]
+    [HttpGet]
+    public List<mapCords> GenerateHeatmap()=>
+        _UsersService.GenerateHeatMap();*/
+    
 
     [HttpPost]
     public async Task<IActionResult> Post(User newUser)
@@ -99,14 +108,14 @@ public class UsersController : ControllerBase
         var res = await _UsersService.Confirm(GUID);
         if(res == 1)
             return Ok();
-        return BadRequest("Wrong link for conformation!");
+        return BadRequest("Krivo uneseni sigurnosni PIN!");
     }
 
     [AllowAnonymous]
     [Route("login")]
     [HttpPost]
     public async Task<IActionResult> Login(User user){
-        user.username = "username";     //login method for generating jwt token
+        user.username = "username";     
         var (token, fuser) = await _UsersService.Authenticate(user.email, user.password);
     
         if(fuser is null)
