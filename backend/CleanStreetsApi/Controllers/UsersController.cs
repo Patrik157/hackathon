@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CleanStreetsApi.Controllers;
 
-[Authorize]
+//[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
@@ -137,6 +137,6 @@ public class UsersController : ControllerBase
         if(token is null)
             return Unauthorized();
 
-        return Ok(token);
+        return Ok(fuser);
     }
 }
