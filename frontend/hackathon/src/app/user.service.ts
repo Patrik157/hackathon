@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserToken } from './user';
 import { Router } from '@angular/router';
@@ -24,6 +24,11 @@ export class UserService {
   signUp(user: User): Observable<User>{
     const url = this.userUrl + "/Register";
     return this.http.post<User>(url, user, this.httpOptions);
+  }
+
+  searchHeroes(term: string): Observable<User[]> {
+    if(!term.trim()) {return of([]);}
+    return this.http.get<User[]>(`${this.userUrl}/?name=${term}`);
   }
 
   isLoggedin():boolean{
