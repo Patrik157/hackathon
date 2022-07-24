@@ -12,10 +12,11 @@ export class UserService {
   private userUrl = "https://localhost:7187/api/users";
   private user?:User;
   private loggedin:boolean = false;
+  private userlvl:number = -1;
   ua = navigator.userAgent;
   private loginError?: string
 
-  //'Authorization': `Bearer ${auth_token}`
+
   private httpOptions = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
   };
@@ -29,6 +30,10 @@ export class UserService {
     return this.loggedin;
   }
 
+  getUserlvl(){
+    return this.userlvl;
+  }
+
   logIn(user: User){
     const url = this.userUrl + "/Login";
     this.http.post<UserToken>(url, user, this.httpOptions).subscribe({next: (v : UserToken) => {
@@ -36,6 +41,7 @@ export class UserService {
       this.loginError = undefined;
       this.httpOptions.headers = this.httpOptions.headers.append("Authorization", `Bearer ${v.token}`);
       this.user = v.user;
+      this.userlvl = v.user.role
       if(this.ua.includes("Android")){
         this.router.navigateByUrl("/prijaviSmece");
       }

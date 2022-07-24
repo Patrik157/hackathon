@@ -11,7 +11,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { StanjeZagadenjaComponent } from './stanje-zagadenja/stanje-zagadenja.component';
-import { PhoneComponent } from './phone/phone.component'
+import { PhoneComponent } from './phone/phone.component';
+import { HeaderComponent } from './header/header.component';
+import { UserSearchComponent } from './user-search/user-search.component'
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { PhoneComponent } from './phone/phone.component'
     SignUpComponent,
     LogInComponent,
     StanjeZagadenjaComponent,
-    PhoneComponent
+    PhoneComponent,
+    HeaderComponent,
+    UserSearchComponent
   ],
   imports: [
     BrowserModule,
