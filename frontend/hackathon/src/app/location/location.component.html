@@ -1,5 +1,11 @@
 <google-map
-  height="300px"
-  width="100%"
-  [center]="center"
-></google-map>
+            width="100%"
+            [center]="center"
+            (mapClick)="addMarker($event)">
+  <map-marker *ngFor="let markerPosition of markerPositions"
+              [position]="markerPosition"
+              [options]="markerOptions"
+              (mapClick)="marker($event)"
+              ></map-marker>
+  <map-heatmap-layer [data]="heatmapData" [options]="heatmapOptions"></map-heatmap-layer>
+</google-map>
