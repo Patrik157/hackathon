@@ -40,17 +40,17 @@ export class LocationComponent implements OnInit {
   kor:Koordinate = {lat: 1, lng: 13}
 
   heatmapOptions = {radius: 20};
-    /*{lat: 45.3285048047716, lng: 14.469356252114872},
+  heatmapData =[
+    {lat: 45.3285048047716, lng: 14.469356252114872},
     {lat: 45.32884423027377, lng: 14.469860507409672},
     {lat: 45.32927416632327, lng: 14.470590068261723},
     {lat: 45.32977198293515, lng: 14.470139457147221},
-    this.kor,
-  ];*/
+  ];
 
   constructor(private userService: UserService,private heatMapService: HeatMapService) { }
 
   click(){
-    return this.userService.getHeatmap
+    return this.userService.heatMap;
   }
 
   ngOnInit(): void {
@@ -61,5 +61,5 @@ export class LocationComponent implements OnInit {
       }
     })
   }
-  heatmapData = this.click()
+  //heatmapData = this.click()
 }
