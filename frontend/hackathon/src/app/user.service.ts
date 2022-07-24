@@ -31,6 +31,11 @@ export class UserService {
     return this.http.get<User[]>(`${this.userUrl}/?name=${term}`);
   }
 
+  verify(verification: string){
+    const url = this.userUrl + `/Confirm/${verification}`;
+    return this.http.post(url, this.httpOptions);
+  }
+
   isLoggedin():boolean{
     return this.loggedin;
   }

@@ -3,3 +3,8 @@
 <input #email type="email">
 <input #password type="password">
 <button (click)="signup(username.value, email.value, password.value)">Sign up</button>
+
+<div *ngIf="toggleVerification">
+  <input #verification>
+  <button (click)="verify(verification.value)">Sumbit</button>
+</div>

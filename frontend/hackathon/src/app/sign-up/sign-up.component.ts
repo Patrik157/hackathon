@@ -10,9 +10,14 @@ import { Location } from '@angular/common';
 })
 export class SignUpComponent implements OnInit {
   error?: string
+  toggleVerification: boolean = false
 
   signup(username: string, email:string, password:string){
-    this.userService.signUp({username, email, password} as User).subscribe({next: (v) => this.location.back(), error: (e) => this.error = e.error});
+    this.userService.signUp({username, email, password} as User).subscribe({next: (v) => this.toggleVerification = true, error: (e) => this.error = e.error});
+  }
+
+  verify(verification: string){
+    this.userService.verify(verification).subscribe();
   }
 
   constructor(private userService:UserService, private location: Location) { }
