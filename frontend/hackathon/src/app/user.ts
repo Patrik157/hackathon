@@ -11,7 +11,7 @@ export interface UserToken{
   token: string
 }
 
-export interface Position{
+export interface Koordinate{
   lat: number,
   lng: number
 }
