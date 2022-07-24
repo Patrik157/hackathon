@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,10 +18,10 @@ export class SignUpComponent implements OnInit {
   }
 
   verify(verification: string){
-    this.userService.verify(verification).subscribe();
+    this.userService.verify(verification).subscribe(a => {this.location.back()});
   }
 
-  constructor(private userService:UserService, private location: Location) { }
+  constructor(private userService:UserService, private location: Location, private router: Router) { }
 
   ngOnInit(): void {
   }
