@@ -22,10 +22,22 @@ public class UsersController : ControllerBase
     public async Task<List<User>> Get() =>
         await _UsersService.GetAsync();
 
-    [HttpGet("{id:length(24)}")]
+    /*[HttpGet("{id:length(24)}")]
     public async Task<ActionResult<User>> Get(string id)
     {
         var user = await _UsersService.GetAsync(id);
+
+        if (user is null)
+        {
+            return NotFound();
+        }
+
+        return user;
+    }*/
+    [HttpGet("{email}")]
+    public async Task<ActionResult<User>> GetRole(string email)
+    {
+        var user = await _UsersService.GetRoleAsync(email);
 
         if (user is null)
         {
@@ -125,6 +137,6 @@ public class UsersController : ControllerBase
         if(token is null)
             return Unauthorized();
 
-        return Ok(new{token, fuser});
+        return Ok(token);
     }
 }
