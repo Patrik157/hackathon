@@ -21,12 +21,6 @@ public class UsersController : ControllerBase
     [HttpGet]
     public async Task<List<User>> Get() =>
         await _UsersService.GetAsync();
-    [AllowAnonymous]
-    [Route("Cords")]
-    [HttpGet]
-    public List<mapCords> GetCoords(){
-        return _UsersService.GetCords();
-    }
 
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<User>> Get(string id)
