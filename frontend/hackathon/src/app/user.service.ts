@@ -50,26 +50,14 @@ export class UserService {
     return this.userlvl;
   }
 
-  getRole(email: string){
-    const url = `${this.userUrl}/${email}`;
-    this.http.get<User>(url).subscribe({
-      next: (v) =>{
-        this.userlvl = v.role;
-        this.user = v;
-        this.loggedin = true;
-        if(this.ua.includes("Android")){this.router.navigateByUrl("/prijaviSmece");}
-        else{this.router.navigateByUrl("/stanjeZagadenja");}
-      },
-      error: (e) =>{}}
-      )
-
-  }
-
   logIn(user: User){
     const url = this.userUrl + "/Login";
-    return this.http.post<string>(url, user, this.httpOptions)
-    /*
-      */
+    this.http.post<User>(url, user, this.httpOptions).subscribe(u => {
+      this.user = u
+      this.loggedin = true;
+      if(this.ua.includes("Android")){this.router.navigateByUrl("/prijaviSmece");}
+        else{this.router.navigateByUrl("/stanjeZagadenja");}
+    })
   }
 
   constructor(private http: HttpClient, private router: Router) {}
