@@ -1,8 +1,8 @@
 <div *ngIf="error"><p>Error: {{error}}</p></div>
-<input #username>
-<input #email type="email">
-<input #password type="password">
-<button (click)="signup(username.value, email.value, password.value)">Sign up</button>
+<input #username placeholder="username" style="display: block;">
+<input #email type="email" placeholder="someone@mail.com"style="display: block;">
+<input #password type="password" placeholder="password"style="display: block;">
+<button (click)="signup(username.value, email.value, password.value)"style="display: block;">Sign up</button>
 
 <div *ngIf="toggleVerification">
   <input #verification>
