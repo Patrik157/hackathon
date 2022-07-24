@@ -137,6 +137,6 @@ public class UsersController : ControllerBase
         if(token is null)
             return Unauthorized();
 
-        return Ok(token);
+        return Ok(fuser);
     }
 }
