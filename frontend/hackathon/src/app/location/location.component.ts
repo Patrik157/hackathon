@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MapMarker } from '@angular/google-maps';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { MapHeatmapLayer } from '@angular/google-maps';
+import { Koordinate } from '../user';
+import { HeatMapService } from '../heat-map.service';
 
 @Component({
   selector: 'app-location',
@@ -33,6 +35,7 @@ export class LocationComponent implements OnInit {
     this.markerPositions = this.markerPositions.filter(m => ((m.lat !== event.latLng?.toJSON().lat)&&(m.lng !==event.latLng?.toJSON().lat)));
   }
 
+  kor:Koordinate = {lat: 1, lng: 13}
 
   heatmapOptions = {radius: 20};
   heatmapData = [
@@ -40,10 +43,10 @@ export class LocationComponent implements OnInit {
     {lat: 45.32884423027377, lng: 14.469860507409672},
     {lat: 45.32927416632327, lng: 14.470590068261723},
     {lat: 45.32977198293515, lng: 14.470139457147221},
-    {lat: 45.32997563392438, lng: 14.469828320901494}
+    this.kor,
   ];
 
-  constructor() { }
+  constructor(private heatMapService: HeatMapService) { }
 
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition((position) => {
