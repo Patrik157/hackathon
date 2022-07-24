@@ -17,7 +17,6 @@ public class UsersService
 {
     private readonly IMongoCollection<User> _usersCollection;
 
-    private readonly IMongoCollection<mapCords> _coordsCollection;
 
     
     private readonly string key, salt;
@@ -35,8 +34,7 @@ public class UsersService
         _usersCollection = mongoDatabase.GetCollection<User>(
             CleanStreetsDatabaseSettings.Value.UsersCollectionName);
 
-        _coordsCollection = mongoDatabase.GetCollection<mapCords>(
-            CleanStreetsDatabaseSettings.Value.CoordsCollectionName);
+        
     
         key = CleanStreetsDatabaseSettings.Value.JwtKey;
 
@@ -115,8 +113,10 @@ public class UsersService
     
     public async Task<int> Register(User newUser){  //0= success, 1 = emailtaken, 2 = username taken  3= password too short 4= username is too short
         
-    
-        newUser.GUID = randomGuid();
+
+        Random rnd = new Random();
+        int num = rnd.Next(100000,999999);
+        newUser.GUID = num.ToString();
         if(newUser.username.Length < 3)
             return 4;
         else if(newUser.password.Length < 8)

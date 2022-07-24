@@ -11,7 +11,7 @@ public class mapCords
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
 
-    public double lon { get; set; } = 0;
+    public double lng { get; set; } = 0;
 
     public double lat {get; set; } = 0;
 }
