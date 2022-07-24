@@ -18,7 +18,7 @@ export class UserService {
   private loginError?: string
 
 
-  private httpOptions = {
+   httpOptions = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
   };
 
@@ -50,21 +50,26 @@ export class UserService {
     return this.userlvl;
   }
 
+  getRole(email: string){
+    const url = `${this.userUrl}/${email}`;
+    this.http.get<User>(url).subscribe({
+      next: (v) =>{
+        this.userlvl = v.role;
+        this.user = v;
+        this.loggedin = true;
+        if(this.ua.includes("Android")){this.router.navigateByUrl("/prijaviSmece");}
+        else{this.router.navigateByUrl("/stanjeZagadenja");}
+      },
+      error: (e) =>{}}
+      )
+
+  }
+
   logIn(user: User){
     const url = this.userUrl + "/Login";
-    this.http.post<UserToken>(url, user, this.httpOptions).subscribe({next: (v : UserToken) => {
-      this.loggedin = true;
-      this.loginError = undefined;
-      this.httpOptions.headers = this.httpOptions.headers.append("Authorization", `Bearer ${v.token}`);
-      this.user = v.user;
-      this.userlvl = v.user.role
-      console.log(v.user.role);
-      if(this.ua.includes("Android")){
-        this.router.navigateByUrl("/prijaviSmece");
-      }
-      else {this.router.navigateByUrl("/stanjeZagadenja");}
-    }, error: (e) => this.loginError = e.error});
-    return this.loginError;
+    return this.http.post<string>(url, user, this.httpOptions)
+    /*
+      */
   }
 
   constructor(private http: HttpClient, private router: Router) {}
