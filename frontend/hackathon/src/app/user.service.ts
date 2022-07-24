@@ -21,6 +21,7 @@ export class UserService {
    httpOptions = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
   };
+  heatMap:Koordinate[] = []
 
   signUp(user: User): Observable<User>{
     const url = this.userUrl + "/Register";
@@ -52,7 +53,7 @@ export class UserService {
 
   getHeatmap(){
     const url = "https://localhost:7187/api/cords"
-    return this.http.get<Koordinate[]>(url, this.httpOptions)
+    this.http.get<Koordinate[]>(url, this.httpOptions).subscribe(v => this.heatMap = v)
   }
 
   logIn(user: User){

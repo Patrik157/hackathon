@@ -29,7 +29,7 @@ export class PhoneComponent implements OnInit {
   }
 
   heatMap(){
-    for(let i = 0; i < 20; i++){
+    for(let i = 0; i < 250; i++){
       this.addTrash(this.heatMapService.heatMap[i].lat, this.heatMapService.heatMap[i].lng)
     }
   }
