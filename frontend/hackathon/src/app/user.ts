@@ -10,3 +10,8 @@ export interface UserToken{
   user: User
   token: string
 }
+
+export interface Position{
+  lat: number,
+  lng: number
+}
