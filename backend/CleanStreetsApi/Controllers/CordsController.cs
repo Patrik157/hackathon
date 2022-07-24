@@ -39,7 +39,7 @@ public class cordsController : ControllerBase
     public List<mapcords> GenerateHeatmap()=>
         _cordsService.GenerateHeatMap();*/
     
-
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Post(mapCords newcord)
     {

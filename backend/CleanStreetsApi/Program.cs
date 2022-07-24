@@ -9,7 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.Configure<CleanStreetsDatabaseSettings>(
     builder.Configuration.GetSection("CleanStreetsDatabase"));
+
 builder.Services.AddSingleton<UsersService>();
+builder.Services.AddSingleton<cordsService>();
+
 builder.Services.AddControllers()
     .AddJsonOptions(
         options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
