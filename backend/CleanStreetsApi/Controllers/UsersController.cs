@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CleanStreetsApi.Controllers;
 
-[Authorize]
+//[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
