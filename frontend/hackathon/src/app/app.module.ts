@@ -13,7 +13,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { StanjeZagadenjaComponent } from './stanje-zagadenja/stanje-zagadenja.component';
 import { PhoneComponent } from './phone/phone.component';
 import { HeaderComponent } from './header/header.component';
-import { UserSearchComponent } from './user-search/user-search.component'
+import { UserSearchComponent } from './user-search/user-search.component';
+import { PocetakBackComponent } from './pocetak-back/pocetak-back.component'
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UserSearchComponent } from './user-search/user-search.component'
     StanjeZagadenjaComponent,
     PhoneComponent,
     HeaderComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    PocetakBackComponent
   ],
   imports: [
     BrowserModule,
