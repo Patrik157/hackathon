@@ -34,10 +34,10 @@ public class UsersController : ControllerBase
 
         return user;
     }*/
-    [HttpGet("{username}")]
-    public async Task<ActionResult<User>> GetRole(string username)
+    [HttpGet("{email}")]
+    public async Task<ActionResult<User>> GetRole(string email)
     {
-        var user = await _UsersService.GetRoleAsync(username);
+        var user = await _UsersService.GetRoleAsync(email);
 
         if (user is null)
         {

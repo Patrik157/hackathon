@@ -46,8 +46,8 @@ public class UsersService
     public async Task<User?> GetAsync(string id) =>
         await _usersCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
     
-    public async Task<User> GetRoleAsync(string username) =>
-        await _usersCollection.Find(x => x.username == username).FirstOrDefaultAsync();
+    public async Task<User> GetRoleAsync(string email) =>
+        await _usersCollection.Find(x => x.email == email).FirstOrDefaultAsync();
 
     public async Task CreateAsync(User newUser) =>
         await _usersCollection.InsertOneAsync(newUser);
