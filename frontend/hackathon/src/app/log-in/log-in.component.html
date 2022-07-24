@@ -1,4 +1,4 @@
 <p *ngIf="error">Error: {{error}}</p>
-<input #email>
-<input #password type="password">
-<button (click)="signIn(email.value, password.value)">Log in</button>
+<input #email placeholder="someone@mail.com" style="display: block;">
+<input #password type="password" placeholder="password" style="display: block;">
+<button (click)="signIn(email.value, password.value)" style="display: block;">Log in</button>
