@@ -50,6 +50,11 @@ export class UserService {
     return this.userlvl;
   }
 
+  getHeatmap(){
+    const url = "https://localhost:7187/api/cords"
+    return this.http.get<Koordinate[]>(url, this.httpOptions)
+  }
+
   logIn(user: User){
     const url = this.userUrl + "/Login";
     this.http.post<User>(url, user, this.httpOptions).subscribe(u => {
