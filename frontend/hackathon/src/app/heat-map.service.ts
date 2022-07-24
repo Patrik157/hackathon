@@ -9,8 +9,10 @@ export class HeatMapService {
 
   generate(){
     for(let i = 0; i < 20; i++){
-      this.heatMap[i].lat = (Math.random() * (14.523287- 14.334288)) + 14.334288;
-      this.heatMap[i].lng = (Math.random() * (45.385354 - 45.316470)) + 45.316470;
+      let lat = Math.random()*(14.523287- 14.334288) + 14.334288
+      let lng = Math.random()*(45.385354 - 45.316470) + 45.316470
+      let temp: Koordinate = {lat: lat, lng: lng };
+      this.heatMap.push(temp);
     }
   }
 
