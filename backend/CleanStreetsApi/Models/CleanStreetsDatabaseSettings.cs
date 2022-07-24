@@ -8,6 +8,8 @@ public class CleanStreetsDatabaseSettings
 
     public string UsersCollectionName { get; set; } = null!;
 
+    public string CoordsCollectionName {get; set; } = null!;
+
     public string JwtKey {get; set; } = string.Empty;
 
     public string Salt {get; set; } = string.Empty;
