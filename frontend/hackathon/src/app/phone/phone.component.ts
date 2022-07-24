@@ -15,10 +15,7 @@ export class PhoneComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   prijaviLokaciju(): void{
-    navigator.geolocation.getCurrentPosition(position => {
-      this.lat = position.coords.latitude;
-      this.lng = position.coords.longitude;
-    })
+    console.log(`${this.lat} ${this.lng}`);
     this.addTrash(this.lat!, this.lng!);
     this.change();
   }
@@ -33,6 +30,10 @@ export class PhoneComponent implements OnInit {
 
   ngOnInit(): void {
     //if(!this.userService.ua.includes("Android") || !this.userService.isLoggedin()){this.router.navigateByUrl("");}
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+    })
   }
 
 }
