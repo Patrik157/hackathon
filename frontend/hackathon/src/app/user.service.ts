@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { Koordinate } from './user';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserToken } from './user';
@@ -24,6 +25,11 @@ export class UserService {
   signUp(user: User): Observable<User>{
     const url = this.userUrl + "/Register";
     return this.http.post<User>(url, user, this.httpOptions);
+  }
+
+  addTrash(koordinate: Koordinate) {
+    const url = "https://localhost:7187/api/cords";
+    return this.http.post<Koordinate>(url, koordinate, this.httpOptions);
   }
 
   searchHeroes(term: string): Observable<User[]> {
