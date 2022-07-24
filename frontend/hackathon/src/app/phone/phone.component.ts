@@ -15,7 +15,6 @@ export class PhoneComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   prijaviLokaciju(): void{
-    console.log(`${this.lat} ${this.lng}`);
     this.addTrash(this.lat!, this.lng!);
     this.change();
   }

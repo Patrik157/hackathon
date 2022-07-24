@@ -58,6 +58,7 @@ export class UserService {
       this.httpOptions.headers = this.httpOptions.headers.append("Authorization", `Bearer ${v.token}`);
       this.user = v.user;
       this.userlvl = v.user.role
+      console.log(v.user.role);
       if(this.ua.includes("Android")){
         this.router.navigateByUrl("/prijaviSmece");
       }
